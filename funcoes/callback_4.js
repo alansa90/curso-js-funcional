@@ -29,4 +29,5 @@ Array.prototype.meuFilter = function (fn) {
 }
 const nomesItensValidos2 = carrinho
   .meuFilter(qtdeMaiorQueZero)
+  .map(getNome)
 console.log(nomesItensValidos2)
