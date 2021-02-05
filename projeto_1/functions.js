@@ -4,9 +4,9 @@ const path = require('path')
 function lerPasta (caminho) {
   return new Promise ((resolve, reject) => {
     try {
-      let arquivos = fs.readdirSync(caminho)
-      arquivos = arquivos.map(arquivo => path.join(caminho, arquivo))
-      resolve(arquivos)
+      const arquivos = fs.readdirSync(caminho)
+      const arquivosCompletos = arquivos.map(arquivo => path.join(caminho, arquivo))
+      resolve(arquivosCompletos)
     }
     catch (e) {
       reject(e)
@@ -56,11 +56,9 @@ function removerElementosSeApenasNumeros (array) {
 function removerSimbolos (simbolos, array) {
   return function (array) {
     return array.map(item => {
-      let newText = item
-      simbolos.forEach(simbolo => {
-        newText = newText.split(simbolo).join('')
-      })
-      return newText
+      return simbolos.reduce((acc, simbolo) => {
+        return acc.split(simbolo).join('')
+      }, item)
     })
   }
 }

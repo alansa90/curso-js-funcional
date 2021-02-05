@@ -6,15 +6,6 @@ const simbolos = [
   '.', '?', '!', '-', ',', '"', '♪', '_', '<i>', '</i>', '\r', '[', ']', '(', ')'
 ]
 
-const agruparElementos = (palavras) => {
-  return Object.values(palavras.reduce((acc, palavra) => {
-    const p = palavra.toLowerCase()
-    const qtde = acc[p] ? acc[p].qtde + 1 : 1
-    acc[p] = { elemento: p, qtde }
-    return acc
-  }, {}))
-}
-
 fn.lerPasta(caminho)
   .then(arquivos => fn.elementosTerminadosCom(arquivos, '.srt'))
   .then(caminhos => fn.lerArquivos(caminhos))
