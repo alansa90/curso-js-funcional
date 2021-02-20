@@ -1,20 +1,20 @@
 
-function gerarElementos(array) {
+function createElements(array) {
   return {
-    iniciar(fn) {
-      let indice = 0
+    start (fn) {
+      let index = 0
       const i = setInterval(() => {
-        if (indice >= array.length) {
+        if (index >= array.length) {
           clearInterval(i)
         }
         else {
-          fn(array[indice])
-          indice++
+          fn(array[index])
+          index++
         }
       }, 1000)
       
       return {
-        parar() {
+        stop () {
           clearInterval(i)
         }
       }
@@ -22,21 +22,21 @@ function gerarElementos(array) {
   }
 }
 
-const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-const temp1 = gerarElementos(numeros)
+const temp1 = createElements(numbers)
 
-const exec1 = temp1.iniciar(num => {
+const exec1 = temp1.start(num => {
   console.log(Math.pow(2, num))
 })
 
 setTimeout(() => {
-  exec1.parar()
+  exec1.stop()
 }, 4000)
 
-gerarElementos([
+createElements([
   ['Ana', 'Bia', 'Carlos'],
   ['Daniel', 'Bruno', 'Julia'],
   [1, 2, 3, 4, 5],
 ])
-  .iniciar(console.log)
+  .start(console.log)

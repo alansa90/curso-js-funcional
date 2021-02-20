@@ -2,16 +2,16 @@
 function exec (fn, a, b) {
   return fn(a, b)
 }
-const somarNoTerminal = (x, y) => console.log(x + y)
+const sumTerminal = (x, y) => console.log(x + y)
 
-const subtraitNoTerminal = (x, y) => console.log(x - y)
+const subtractionTerminal = (x, y) => console.log(x - y)
 
-const subtrair = (x, y) => x - y
+const subtraction = (x, y) => x - y
 
-exec(somarNoTerminal, 56, 38)
-exec(subtraitNoTerminal, 182, 27)
+exec(sumTerminal, 56, 38)
+exec(subtractionTerminal, 182, 27)
 
-const r = exec(subtrair, 10, 5)
+const r = exec(subtraction, 10, 5)
 console.log(r)
 
 const cb = () =>  console.log('Exec...')
