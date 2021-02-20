@@ -1,31 +1,32 @@
 const path = require('path')
 const fn = require('./functions')
 
-const caminho = path.join(__dirname, '..', 'dados', 'legendas')
+const pathWay = path.join(__dirname, '..', 'data', 'legends')
 
-const simbolos = [
+const symbols = [
     '.', '?', '-', ',', '"', '♪',
     '_', '<i>', '</i>', '\r', '[', ']',
     '(', ')'
 ]
 
-const palavrasMaisUsadas = fn.composicao(
-    fn.lerDiretorio,
-    fn.elementosTerminadosCom('.srt'),
-    fn.lerArquivos,
-    fn.mesclarElementos,
-    fn.separarTextoPor('\n'),
-    fn.removerElementosSeVazio,
-    fn.removerElementosSeIncluir('-->'),
-    fn.removerElementosSeApenasNumero,
-    fn.removerSimbolos(simbolos),
-    fn.mesclarElementos,
-    fn.separarTextoPor(' '),
-    fn.removerElementosSeVazio,
-    fn.removerElementosSeApenasNumero,
-    fn.agruparElementos,
-    fn.ordernarPorAtribNumerico('qtde', 'desc'),
+const mostUsedWords = fn.composition(
+    fn.readPath,
+    fn.elementsEndingWith('.srt'),
+    fn.readFiles,
+    fn.mixElements,
+    fn.splitTextBy('\n'),
+    fn.removeElementsIfEmpty,
+    fn.removeElementsIfInclude('-->'),
+    fn.removeElementsIfOnlyNumbers,
+    fn.removeSymbols(symbols),
+    fn.mixElements,
+    fn.splitTextBy(' '),
+    fn.removeElementsIfEmpty,
+    fn.removeElementsIfOnlyNumbers,
+    fn.groupElements,
+    fn.orderByAttributeNumeric('qte', 'desc'),
 )
 
-palavrasMaisUsadas(caminho)
+mostUsedWords(pathWay)
     .then(console.log)
+    
