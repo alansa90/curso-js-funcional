@@ -2,7 +2,7 @@ const { from, Observable } = require('rxjs')
 
 function first () {
   return function (source) {
-    return Observable.create(subscriber => {
+    return new Observable (subscriber => {
       source.subscribe({
         next (v) {
           subscriber.next(v)
@@ -17,7 +17,7 @@ function first () {
 
 function none () {
   return function (source) {
-    return Observable.create(subscriber => {
+    return new Observable (subscriber => {
       let last
       source.subscribe({
         next (v) {
