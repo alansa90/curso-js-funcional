@@ -1,7 +1,7 @@
 const { Observable } = require('rxjs')
 
 function elementsWithDelay (time,...elements) {
-  return new Observable.create(subscriber => {
+  return new Observable(subscriber => {
     (elements || []).forEach((el, i) => {
       setTimeout(() => {
         subscriber.next(el)

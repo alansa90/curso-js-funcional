@@ -31,7 +31,7 @@ function none () {
 
 function last () {
   return function (source) {
-    return Observable.create(subscriber => {
+    return new Observable(subscriber => {
       let last
       source.subscribe({
         next (v) {
